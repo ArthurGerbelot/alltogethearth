@@ -1,0 +1,101 @@
+#page-home {
+  .intro {
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+
+    strong {
+      font-size: 2em;
+      color: #AFAFAF;
+      text-shadow: 1px 1px 0px #FFF;
+    }
+  }
+  .brief-wrapper {
+    .button--open-brief {
+      transition: all 1s ease-out; /* For closing */
+      opacity: 1;
+      overflow: hidden;
+    }
+    .brief {
+      transition: all 1s ease-out; /* For closing */
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+
+      margin-top: 50px;
+      margin-bottom: 25px;
+
+      .close-brief {
+        float: right;
+        font-size: 2em;
+        margin-top: 3px;
+        margin-right: 5px;
+        color: lighten($primary_color, 20);
+        cursor: pointer;
+
+        &:hover {
+          color: lighten($primary_color, 30);
+        }
+      }
+      .title {
+        text-align: center;
+      }
+
+      .brief-page {
+        max-width: 800px;
+        margin: auto;
+        background: #FFF;
+        box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.2);
+
+        .brief-title {
+          background: $primary_color;
+          color: #FFF;
+          padding: 15px;
+          margin: 0;
+        }
+        .brief-content {
+          padding: 15px;
+          margin: 2px; /* for hidden overflow + box shadow */
+        }
+      }
+    }
+    &.is-visible-brief {
+      .button--open-brief {
+        opacity: 0;
+        height: 0;
+      }
+      .brief {
+        transition: 3s;  /*  current size / 5000px -- % of --> 3s */
+        opacity: 1;
+        max-height: 5000px;
+      }
+    }
+  }
+
+  .separator {
+    height: 1px;
+    background: lighten($light_gray_color, 10);
+    box-shadow: 0 1px 0 #fff;
+  }
+
+  .features {
+    margin-top: 25px;
+
+    .feature {
+      padding: 5px 15px 75px 5px;
+      text-align: center;
+
+      i {
+        display: block;
+        font-size: 9em;
+        color: $light_gray_color;
+      }
+      .title {
+      }
+      .description {
+        max-width: 300px;
+        margin: auto;
+      }
+    }
+  }
+}
