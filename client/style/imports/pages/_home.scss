@@ -56,6 +56,18 @@
         .brief-content {
           padding: 15px;
           margin: 2px; /* for hidden overflow + box shadow */
+
+          .coming-soon {
+            color: #CCC;
+            font-size: 0.8em;
+            font-style: italic;
+          }
+          p {
+            margin-left: 20px;
+          }
+          .separator {
+            background: #F1F1F1;
+          }
         }
       }
     }

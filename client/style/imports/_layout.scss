@@ -41,7 +41,7 @@
     position: relative;
     display: table;
     width: 100%;
-    min-height: $hero_height;
+    height: $hero_height;
     margin-top: $nav_height;
 
     transition: all 2s;
@@ -136,7 +136,7 @@
       top: -$nav_height;
     }
     #layout-hero-wrapper {
-      min-height: 100%;
+      height: 100%;
       margin-top: 0px;
 
       #layout-hero .intro-line {
