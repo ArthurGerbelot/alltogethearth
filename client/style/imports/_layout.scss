@@ -13,17 +13,23 @@
     background: #1A1C21;
 
     #layout-nav-container {
+      height: $nav_height;
       max-width: $max_width;
       margin: auto;
 
       a {
         color: #E9E9EA;
-        display: inline-block;
+        display: block;
+        float: left;
         line-height: $nav_height;
         height: $nav_height;
         padding: 0 20px;
         text-decoration: none;
         transition: color 0.5s;
+
+        &.nav-right {
+          float: right;
+        }
 
         &:hover, &.active {
           color: $primary_color;

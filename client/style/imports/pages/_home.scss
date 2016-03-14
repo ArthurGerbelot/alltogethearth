@@ -1,15 +1,4 @@
 #page-home {
-  .intro {
-    max-width: 600px;
-    margin: 20px auto;
-    text-align: center;
-
-    strong {
-      font-size: 2em;
-      color: #AFAFAF;
-      text-shadow: 1px 1px 0px #FFF;
-    }
-  }
   .brief-wrapper {
     .button--open-brief {
       transition: all 1s ease-out; /* For closing */
@@ -17,6 +6,7 @@
       overflow: hidden;
     }
     .brief {
+      position: relative;
       transition: all 1s ease-out; /* For closing */
       opacity: 0;
       max-height: 0;
@@ -44,38 +34,6 @@
       .brief-page {
         max-width: 800px;
         margin: auto;
-        background: #FFF;
-        box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.2);
-
-        .brief-title {
-          background: $primary_color;
-          color: #FFF;
-          padding: 15px;
-          margin: 0;
-        }
-        .brief-content {
-          padding: 15px;
-          margin: 2px; /* for hidden overflow + box shadow */
-
-          .coming-soon {
-            color: #CCC;
-            font-size: 0.8em;
-            font-style: italic;
-          }
-          h4.coming-soon {
-            font-size: 1em;
-            margin-bottom: 0;
-          }
-          ul {
-            margin-top: 5px;
-          }
-          p {
-            margin-left: 20px;
-          }
-          .separator {
-            background: #F1F1F1;
-          }
-        }
       }
     }
     &.is-visible-brief {
@@ -89,12 +47,6 @@
         max-height: 5000px;
       }
     }
-  }
-
-  .separator {
-    height: 1px;
-    background: lighten($light_gray_color, 10);
-    box-shadow: 0 1px 0 #fff;
   }
 
   .features {

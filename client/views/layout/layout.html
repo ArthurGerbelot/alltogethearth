@@ -3,6 +3,12 @@
     <div id="layout">
       <nav id="layout-nav">
         <div id="layout-nav-container">
+          {{#if isLogged}}
+            <a href="{{pathFor 'userProfile'}}" class="nav-right {{isActiveRoute 'userProfile'}}">{{getUsername}}</a>
+          {{else}}
+            <a href="{{pathFor 'signup'}}" class="nav-right {{isActiveRoute 'signup'}}">Signup</a>
+            <a href="{{pathFor 'login'}}" class="nav-right {{isActiveRoute 'login'}}">Login</a>
+          {{/if}}
           <a href="{{pathFor 'home'}}" class="{{isActiveRoute 'home'}}"><i class="fa fa-globe"></i></a>
           <a href="{{pathFor 'services'}}" class="{{isActiveRoute 'services'}}">Services</a>
           <a href="{{pathFor 'citizens'}}" class="{{isActiveRoute 'citizens'}}">Citizens</a>

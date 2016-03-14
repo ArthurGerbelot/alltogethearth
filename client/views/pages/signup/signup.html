@@ -1,0 +1,41 @@
+<Template name="signup">
+  <div id="page-signup">
+    <h1 class="intro">Your first step to change the world</h1>
+    <div class="box">
+      <h2 class="brief-title box-title">Become a Citizen</h2>
+      <div class="box-content">
+        <form>
+          <div class="field-group {{#if hasError 'email'}}has-error{{/if}}">
+            <label for="email">
+              Email
+              {{#if hasError 'email'}}<span class="error">{{getError 'email'}}</span>{{/if}}
+            </label>
+            <input class="form-control" type="email" name="email" value="{{getValue 'email'}}" />
+          </div>
+          <div class="field-group {{#if hasError 'password'}}has-error{{/if}}">
+            <label for="password">
+              Password
+              {{#if hasError 'password'}}<span class="error">{{getError 'password'}}</span>{{/if}}
+            </label>
+            <input class="form-control" type="password" name="password" value="{{getValue 'password'}}" />
+          </div>
+          <div class="field-group {{#if hasError 'confirm-password'}}has-error{{/if}}">
+            <label for="confirm-password">
+              Confirm password
+              {{#if hasError 'confirm-password'}}<span class="error">{{getError 'confirm-password'}}</span>{{/if}}
+            </label>
+            <input class="form-control" type="password" name="confirm-password" value="{{getValue 'confirm-password'}}" />
+          </div>
+          <div class="accept">
+            Earth's laws are not like terms and condition. It's important for all of us to understand them.<br/>
+            <div class="earthslaws"><a target="_blank" href="{{pathFor 'earthsLaws'}}">Read Earth's laws</a></div>
+            By clicking on this next button, you accept Earth's laws.
+          </div>
+          <div class="field-submit">
+            <button class="button">Create an ID</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</Template>

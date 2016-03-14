@@ -4,9 +4,13 @@
 @import '{}/client/style/imports/variables.scss';
 @import '{}/client/style/imports/grid.scss';
 @import '{}/client/style/imports/layout.scss';
+@import '{}/client/style/imports/pages.scss';
+@import '{}/client/style/imports/box.scss';
+@import '{}/client/style/imports/form.scss';
 
 /* Pages */
 @import '{}/client/style/imports/pages/home.scss';
+@import '{}/client/style/imports/pages/signup.scss';
 
 /* Global */
 

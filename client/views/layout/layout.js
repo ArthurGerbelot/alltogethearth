@@ -36,3 +36,10 @@ Template.layout.events({
 Template.registerHelper('getProjectName', function() {
   return new Spacebars.SafeString("<span class='project-name'>All Togeth'<span>Earth</span></span>");
 });
+Template.registerHelper('isLogged', function() {
+  return !!Meteor.userId()
+});
+Template.registerHelper('getUsername', function() {
+  let user = Meteor.user()
+  return user && user.emails && user.emails[0] && user.emails[0].address
+});

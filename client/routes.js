@@ -16,3 +16,10 @@ FlowRouter.route('/citizens', {
     BlazeLayout.render("layout", {main: "citizens"});
   }
 });
+
+FlowRouter.route('/signup', {
+  name: "signup",
+  action() {
+    BlazeLayout.render("layout", {main: "signup"});
+  }
+});

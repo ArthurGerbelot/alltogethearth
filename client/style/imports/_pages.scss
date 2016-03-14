@@ -1,0 +1,31 @@
+#page {
+
+  .intro {
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+
+    strong {
+      font-size: 2em;
+      color: #AFAFAF;
+      text-shadow: 1px 1px 0px #FFF;
+    }
+  }
+  h1.intro {
+    font-size: 2em;
+    color: #AFAFAF;
+    text-shadow: 1px 1px 0px #FFF;
+  }
+
+  .coming-soon {
+    color: #CCC;
+    font-size: 0.8em;
+    font-style: italic;
+  }
+
+  .separator {
+    height: 1px;
+    background: lighten($light_gray_color, 10);
+    box-shadow: 0 1px 0 #fff;
+  }
+}
