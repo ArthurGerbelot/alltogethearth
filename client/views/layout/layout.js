@@ -12,11 +12,16 @@ Template.layout.onCreated(function() {
   }
   console.log("layout class = ", layout_class)
   instance.layout_class = new ReactiveVar(layout_class)
+
+  instance.subnav_user_account_is_open = new ReactiveVar(false)
 })
 
 Template.layout.helpers({
   getLayoutClass() {
     return Template.instance().layout_class.get()
+  },
+  subnavUserAccountIsOpen() {
+    return Template.instance().subnav_user_account_is_open.get()
   }
 })
 
@@ -29,6 +34,21 @@ Template.layout.events({
       console.log("Timeout")
       instance.layout_class.set('')
     }, 2000)
+  },
+  'click #layout-nav .nav-link.user-account'(e) {
+    Template.instance().subnav_user_account_is_open.set(true)
+    e.stopPropagation()
+  },
+  'click #layout-wrapper'() {
+    Template.instance().subnav_user_account_is_open.set(false)
+  },
+
+  'click .subnav-link--logout'(e) {
+    e.preventDefault()
+    Meteor.logout(function(err) {
+      // callback
+      FlowRouter.go('home')
+    });
   }
 })
 
@@ -39,7 +59,25 @@ Template.registerHelper('getProjectName', function() {
 Template.registerHelper('isLogged', function() {
   return !!Meteor.userId()
 });
+Template.registerHelper('isntLogged', function() {
+  return !Meteor.userId()
+});
+Template.registerHelper('getMe', function() {
+  console.log(Meteor.user())
+  return Meteor.user()
+});
+Template.registerHelper('getMyId', function() {
+  console.log(Meteor.user())
+  return Meteor.userId()
+});
 Template.registerHelper('getUsername', function() {
   let user = Meteor.user()
   return user && user.emails && user.emails[0] && user.emails[0].address
 });
+
+Avatar.options = {
+  gravatarDefault: "identicon",
+  customImageProperty() {
+    // return this.avatar_url {this : user}
+  }
+};
