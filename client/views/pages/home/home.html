@@ -28,7 +28,9 @@
                   <li>Birth/Death certificates</li>
                   <li>And more..</li>
                 </ul>
-                <a class="button" href="{{pathFor 'signup'}}">Become a Citizen</a>
+                {{#if isntLogged}}
+                  <a class="button" href="{{pathFor 'signup'}}">Become a Citizen</a>
+                {{/if}}
               </p>
             </div>
             <div class="separator"></div>
@@ -88,7 +90,11 @@
           <div class="description">
             Join the cause and help us to create a better world be becoming a Citizen.
           </div>
-          <a class="button" href="{{pathFor 'signup'}}">Get an ID</a>
+          {{#if isntLogged}}
+            <a class="button" href="{{pathFor 'signup'}}">Get an ID</a>
+          {{else}}
+            <a class="button" href="{{pathFor 'user' user_id=getMyId}}">View your account</a>
+          {{/if}}
         </div>
       </div>
       <div class="col-3 col-small-1">

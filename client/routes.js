@@ -1,3 +1,20 @@
+loggedInRoutes = FlowRouter.group({
+  triggersEnter: [context => {
+    if (!Meteor.userId()) {
+      console.warn("You cannot access to " + context.path + " without logged in");
+      FlowRouter.go('authLogin');
+    }
+  }]
+});
+notLoggedInRoutes = FlowRouter.group({
+  triggersEnter: [context => {
+    if(Meteor.userId()) {
+      console.warn("You cannot access to " + context.path + " without logged out");
+      FlowRouter.go('home');
+    }
+  }]
+});
+
 FlowRouter.route('/', {
   name: "home",
   action() {
@@ -17,9 +34,23 @@ FlowRouter.route('/citizens', {
   }
 });
 
-FlowRouter.route('/signup', {
+
+notLoggedInRoutes.route('/signup', {
   name: "signup",
   action() {
     BlazeLayout.render("layout", {main: "signup"});
   }
 });
+notLoggedInRoutes.route('/login', {
+  name: "login",
+  action() {
+    BlazeLayout.render("layout", {main: "login"});
+  }
+});
+
+loggedInRoutes.route('/user/:user_id', {
+  name: "user",
+  action() {
+    BlazeLayout.render("layout", {main: "user"});
+  }
+})

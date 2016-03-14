@@ -2,10 +2,6 @@ Template.signup.onCreated(function() {
   let instance = this;
   instance.values = new ReactiveVar({})
   instance.errors = new ReactiveVar({})
-
-  instance.autorun(function () {
-    instance.subscribe('me');
-  });
 })
 
 Template.signup.helpers({
@@ -30,10 +26,6 @@ Template.signup.events({
     let values = Template.instance().values.get()
     values[field.name] = field.value
     instance.values.set(values)
-
-    console.log("Debrief : ")
-    console.log("values : ", Template.instance().values.get())
-    console.log("errors : ", Template.instance().errors.get())
   },
   'submit #page-signup form'(e) {
     e.preventDefault()
@@ -57,7 +49,7 @@ Template.signup.events({
           return console.log("Login Error : ", err, err.error)
         }
         console.log("login result : ", result)
-        FlowRouter.go('home')
+        FlowRouter.go('user', {user_id: Meteor.userId()})
       })
     })
   }

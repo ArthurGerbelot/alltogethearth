@@ -1,19 +1,33 @@
 <Template name="layout">
   <div id="layout-wrapper" class="{{getLayoutClass}}">
     <div id="layout">
+
       <nav id="layout-nav">
         <div id="layout-nav-container">
           {{#if isLogged}}
-            <a href="{{pathFor 'userProfile'}}" class="nav-right {{isActiveRoute 'userProfile'}}">{{getUsername}}</a>
+            <a class="nav-link nav-right user-account">
+              {{> avatar user=getMe shape="circle"}}
+              <span class="display-name">{{getUsername}}</span>
+            </a>
           {{else}}
-            <a href="{{pathFor 'signup'}}" class="nav-right {{isActiveRoute 'signup'}}">Signup</a>
-            <a href="{{pathFor 'login'}}" class="nav-right {{isActiveRoute 'login'}}">Login</a>
+            <a href="{{pathFor 'signup'}}" class="nav-link nav-right {{isActiveRoute 'signup'}}">Signup</a>
+            <a href="{{pathFor 'login'}}" class="nav-link nav-right {{isActiveRoute 'login'}}">Login</a>
           {{/if}}
-          <a href="{{pathFor 'home'}}" class="{{isActiveRoute 'home'}}"><i class="fa fa-globe"></i></a>
-          <a href="{{pathFor 'services'}}" class="{{isActiveRoute 'services'}}">Services</a>
-          <a href="{{pathFor 'citizens'}}" class="{{isActiveRoute 'citizens'}}">Citizens</a>
+          <a href="{{pathFor 'home'}}" class="nav-link {{isActiveRoute 'home'}}"><i class="fa fa-globe"></i></a>
+          <a href="{{pathFor 'services'}}" class="nav-link {{isActiveRoute 'services'}}">Services</a>
+          <a href="{{pathFor 'citizens'}}" class="nav-link {{isActiveRoute 'citizens'}}">Citizens</a>
+        </div>
+        <div id="layout-subnav-container">
+          <div class="nav-subnav nav-subnav--user-account {{#if subnavUserAccountIsOpen}} nav-subnav--open {{/if}}">
+            <a href="{{pathFor 'user' user_id=getMyId}}" class="subnav-link">
+              <i class="fa fa-gear"></i>
+              Profile
+            </a>
+            <a class="subnav-link subnav-link--logout"><i class="fa fa-sign-out"></i>Logout</a>
+          </div>
         </div>
       </nav>
+
       <header id="layout-hero-wrapper">
         <div id="layout-hero">
           <div class="intro-line">Welcome to </div>

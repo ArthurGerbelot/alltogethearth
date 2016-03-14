@@ -1,0 +1,31 @@
+<Template name="login">
+  <div id="page-login">
+    <div class="box">
+      <h2 class="brief-title box-title">Login</h2>
+      <div class="box-content">
+        <form>
+          {{#if hasGlobalError}}
+            <div class="form-error">Error with your Email / Password</div>
+          {{/if}}
+          <div class="field-group {{#if hasError 'email'}}has-error{{/if}}">
+            <label for="email">
+              Email
+              {{#if hasError 'email'}}<span class="error">{{getError 'email'}}</span>{{/if}}
+            </label>
+            <input class="form-control" type="email" name="email" value="{{getValue 'email'}}" />
+          </div>
+          <div class="field-group {{#if hasError 'password'}}has-error{{/if}}">
+            <label for="password">
+              Password
+              {{#if hasError 'password'}}<span class="error">{{getError 'password'}}</span>{{/if}}
+            </label>
+            <input class="form-control" type="password" name="password" value="{{getValue 'password'}}" />
+          </div>
+          <div class="field-submit">
+            <button class="button">Create an ID</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</Template>
