@@ -29,6 +29,9 @@ html, body {
   font-family: 'Roboto', sans-serif;
   font-family: 'Open Sans', sans-serif;
 }
+body {
+  overflow-y: scroll; /* force scroll to disable width change when display/hide */
+}
 
 a {
   color: $primary_color;
