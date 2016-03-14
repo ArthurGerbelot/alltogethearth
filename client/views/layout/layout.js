@@ -75,9 +75,11 @@ Template.registerHelper('getUsername', function() {
   return user && user.emails && user.emails[0] && user.emails[0].address
 });
 
+
 Avatar.options = {
   gravatarDefault: "identicon",
-  customImageProperty() {
-    // return this.avatar_url {this : user}
-  }
+  // customImageProperty() {
+  //   return null
+  //   // return this.avatar_url {this : user}
+  // }
 };

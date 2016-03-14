@@ -47,10 +47,22 @@ notLoggedInRoutes.route('/login', {
     BlazeLayout.render("layout", {main: "login"});
   }
 });
+notLoggedInRoutes.route('/forgot-password', {
+  name: "forgot",
+  action() {
+    BlazeLayout.render("layout", {main: "forgot"});
+  }
+});
+notLoggedInRoutes.route('/reset-password/:reset_token', {
+  name: "reset-password",
+  action() {
+    BlazeLayout.render("layout", {main: "resetPassword"});
+  }
+});
 
 loggedInRoutes.route('/user/:user_id', {
   name: "user",
-  action() {
+  action(params) {
     BlazeLayout.render("layout", {main: "user"});
   }
 })

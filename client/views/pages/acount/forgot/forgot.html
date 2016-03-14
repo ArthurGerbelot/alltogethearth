@@ -1,0 +1,25 @@
+<Template name="forgot">
+  <div id="page-forgot">
+    <h1 class="intro">Ho.. You forgot your password ?</h1>
+    <div class="box">
+      <h2 class="brief-title box-title">Forgot password</h2>
+      <div class="box-content">
+        <form>
+          {{#if hasSuccessMessage}}
+            <div class="form-success">If this email is associate to a user. An email was sent to allow you to renew your password.</div>
+          {{/if}}
+          <div class="field-group {{#if hasError 'email'}}has-error{{/if}}">
+            <label for="email">
+              Email
+              {{#if hasError 'email'}}<span class="error">{{getError 'email'}}</span>{{/if}}
+            </label>
+            <input class="form-control" type="email" name="email" value="{{getValue 'email'}}" />
+          </div>
+          <div class="field-submit">
+            <button class="button">Send email</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</Template>

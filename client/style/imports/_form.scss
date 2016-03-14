@@ -4,11 +4,18 @@
   form {
     margin: 0;
   }
-  .form-error {
-    color: #FD3E3B;
+  .form-error, .form-success {
     font-weight: 500;
     text-align: center;
+    margin-bottom: 15px;
   }
+  .form-error {
+    color: $error_color;
+  }
+  .form-success {
+    color: $success_color;
+  }
+
   .field-group {
     margin-bottom: 15px;
 
@@ -19,7 +26,7 @@
       font-weight: 700;
 
       .error {
-        color: #FD3E3B;
+        color: $error_color;
         font-weight: 500;
 
         &:before {
@@ -59,13 +66,13 @@
 
     &.has-error {
       .form-control {
-        border-color: #FD3E3B;
+        border-color: $error_color;
         -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
         box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
 
         &:focus {
-          border-color: #FD3E3B;
-          -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px rgba(253, 62, 59, 0.55);
+          border-color: $error_color;
+          -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px rgba($error_color_r, $error_color_g, $error_color_b, 0.55);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px rgba(253, 62, 59, 0.55);
         }
       }
