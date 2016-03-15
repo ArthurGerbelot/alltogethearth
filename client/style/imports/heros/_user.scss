@@ -1,0 +1,36 @@
+#layout-hero.heroUser {
+  position: relative;
+  width: 100%;
+  height: $hero_height;
+  margin-top: $nav_height;
+
+  background: $primary_color;
+
+  #particles-js {
+    position: absolute;
+    height: $hero_height;
+    width: 100%;
+  }
+
+  h2 {
+  padding-top: 40px;
+    text-align: center;
+    color: #FFF;
+  }
+  .avatar-wrapper {
+    position: absolute;
+    top: $hero_height - 100px;
+    left:0; right:0;
+
+    .avatar {
+      margin: auto;
+      width: 150px;
+      height: 150px;
+
+      img {
+        border: 4px solid $page_background_color;
+      }
+    }
+  }
+
+}

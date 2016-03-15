@@ -18,19 +18,19 @@ notLoggedInRoutes = FlowRouter.group({
 FlowRouter.route('/', {
   name: "home",
   action() {
-    BlazeLayout.render("layout", {main: "home"});
+    BlazeLayout.render("layout", {main: "home", hero: "heroDefault"});
   }
 });
 FlowRouter.route('/services', {
   name: "services",
   action() {
-    BlazeLayout.render("layout", {main: "services"});
+    BlazeLayout.render("layout", {main: "services", hero: "heroDefault"});
   }
 });
 FlowRouter.route('/citizens', {
   name: "citizens",
   action() {
-    BlazeLayout.render("layout", {main: "citizens"});
+    BlazeLayout.render("layout", {main: "citizens", hero: "heroDefault"});
   }
 });
 
@@ -38,31 +38,31 @@ FlowRouter.route('/citizens', {
 notLoggedInRoutes.route('/signup', {
   name: "signup",
   action() {
-    BlazeLayout.render("layout", {main: "signup"});
+    BlazeLayout.render("layout", {main: "signup", hero: "heroDefault"});
   }
 });
 notLoggedInRoutes.route('/login', {
   name: "login",
   action() {
-    BlazeLayout.render("layout", {main: "login"});
+    BlazeLayout.render("layout", {main: "login", hero: "heroDefault"});
   }
 });
 notLoggedInRoutes.route('/forgot-password', {
   name: "forgot",
   action() {
-    BlazeLayout.render("layout", {main: "forgot"});
+    BlazeLayout.render("layout", {main: "forgot", hero: "heroDefault"});
   }
 });
 notLoggedInRoutes.route('/reset-password/:reset_token', {
   name: "reset-password",
   action() {
-    BlazeLayout.render("layout", {main: "resetPassword"});
+    BlazeLayout.render("layout", {main: "resetPassword", hero: "heroDefault"});
   }
 });
 
 loggedInRoutes.route('/user/:user_id', {
   name: "user",
   action(params) {
-    BlazeLayout.render("layout", {main: "user"});
+    BlazeLayout.render("layout", {main: "user", hero: "heroUser"});
   }
 })

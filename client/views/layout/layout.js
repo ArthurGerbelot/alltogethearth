@@ -70,16 +70,19 @@ Template.registerHelper('getMyId', function() {
   console.log(Meteor.user())
   return Meteor.userId()
 });
-Template.registerHelper('getUsername', function() {
+Template.registerHelper('getDisplayName', function() {
   let user = Meteor.user()
-  return user && user.emails && user.emails[0] && user.emails[0].address
+  return getDisplayName(user)
 });
 
-
-Avatar.options = {
+Avatar.setOptions({
   gravatarDefault: "identicon",
   // customImageProperty() {
   //   return null
   //   // return this.avatar_url {this : user}
   // }
-};
+});
+
+getDisplayName = function(user) {
+  return user && user.emails && user.emails[0] && user.emails[0].address
+}

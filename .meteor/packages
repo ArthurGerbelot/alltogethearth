@@ -25,6 +25,6 @@ kadira:blaze-layout
 zimme:active-route
 arillo:flow-router-helpers
 accounts-password
-jagi:astronomy
-jagi:astronomy-validators
+#jagi:astronomy
+#jagi:astronomy-validators
 utilities:avatar
