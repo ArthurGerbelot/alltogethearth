@@ -102,6 +102,13 @@
     }
   }
 
+  #layout-hero {
+    position: relative;
+    width: 100%;
+    height: $hero_height;
+    margin-top: $nav_height;
+  }
+
   #page-wrapper {
     background: $page_background_color;
     min-height: calc(100% -  #{$nav_height + $hero_height});

@@ -5,10 +5,17 @@
     margin: 20px auto;
     text-align: center;
 
-    strong {
-      font-size: 2em;
+    h2 {
+      /*font-size: 2em;*/
       color: #AFAFAF;
       text-shadow: 1px 1px 0px #FFF;
+    }
+    .description {
+      text-align: left;
+
+      li {
+        margin-top: 10px;
+      }
     }
   }
   h1.intro {

@@ -4,7 +4,10 @@ loggedInRoutes = FlowRouter.group({
       console.warn("You cannot access to " + context.path + " without logged in");
       FlowRouter.go('authLogin');
     }
-  }]
+  }],
+  subscriptions: function(params, queryParams) {
+    this.register('me');
+  }
 });
 notLoggedInRoutes = FlowRouter.group({
   triggersEnter: [context => {
@@ -63,6 +66,9 @@ notLoggedInRoutes.route('/reset-password/:reset_token', {
 loggedInRoutes.route('/user/:user_id', {
   name: "user",
   action(params) {
-    BlazeLayout.render("layout", {main: "user", hero: "heroUser"});
+    BlazeLayout.render("layout", {main: "userProfile", hero: "heroUser"});
+  },
+  subscriptions: function(params, queryParams) {
+    this.register('user-profile', Meteor.subscribe(params.user_id));
   }
 })

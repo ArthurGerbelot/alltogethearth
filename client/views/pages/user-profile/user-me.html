@@ -1,0 +1,9 @@
+<!-- For /user/{_id} page when IS the connected user -->
+<Template name="userMe">
+  {{> userPanel active='me'}}
+  {{#with getMe}}
+    - email
+    - password
+    - background/particle color
+  {{/with}}
+</Template>

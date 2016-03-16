@@ -1,0 +1,13 @@
+<Template name="userProfile">
+  <div id="page-user">
+    {{#if Template.subscriptionsReady}}
+      {{#if isLoggedUser}}
+        {{> userMe user=getUser}}
+      {{else}}
+        {{> userProfile user=getUser}}
+      {{/if}}
+    {{else}}
+      <div>Loading..</div>
+    {{/if}}
+  </div>
+</Template>

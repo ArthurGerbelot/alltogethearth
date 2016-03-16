@@ -1,7 +1,7 @@
 Template.heroUser.onCreated(function() {
   let instance = this;
 
-  Meteor.subscribe("user-profile", FlowRouter.getParam('user_id'));
+  // Meteor.subscribe("user-profile", FlowRouter.getParam('user_id'));
 
   instance.user = new ReactiveVar(Meteor.users.findOne({_id: FlowRouter.getParam('user_id')}))
 
@@ -30,7 +30,7 @@ let initParticlesJS = function() {
 let particles_json = {
   "particles": {
     "number": {
-      "value": 120,
+      "value": 200,
       "density": {
         "enable": true,
         "value_area": 800
