@@ -1,3 +1,48 @@
-#layout-wrapper #page-wrapper #page.userProfile {
-  padding-top: 50px;
+#layout-wrapper #page-wrapper #page.userProfile,
+#layout-wrapper #page-wrapper #page.userUpdateEmail,
+#layout-wrapper #page-wrapper #page.userUpdatePassword {
+
+  padding-top: 100px;
+
+  .user-panel {
+    width: 200px;
+    float: left;
+
+    a {
+      display: block;
+      padding: 10px;
+      background: #DCDCDC;
+      border: 1px solid #ECECEC;
+      border-bottom: none;
+      color: $page_color;
+
+      i {
+        margin-right: .5em;
+      }
+
+      &:last-of-type {
+        border: 1px solid #ECECEC;
+      }
+      &:hover {
+        background: #CCC;
+      }
+      &:hover, &.active {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .user-content {
+    margin: 0 200px;
+    padding: 0 25px;
+
+    @media (max-width: $size_small) {
+      margin-right: 0;
+    }
+
+    .box {
+      max-width: 600px;
+      margin: auto;
+    }
+  }
 }

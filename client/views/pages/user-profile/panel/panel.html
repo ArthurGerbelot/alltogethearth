@@ -1,7 +1,16 @@
 <Template name="userPanel">
-  - <a href="{{pathFor 'user'}}">Basic info</a>
-  <br/>
-  - Email
-  <br/>
-  - Password
+  <div class="user-panel">
+    <a href="{{pathFor 'user' user_id=getUserId}}" class="{{#if isActive 'me'}}active{{/if}}">
+      <i class="fa fa-user"></i>
+      Basic info
+    </a>
+    <a href="{{pathFor 'userUpdateEmail' user_id=getUserId}}" class="{{#if isActive 'email'}}active{{/if}}">
+      <i class="fa fa-envelope"></i>
+      Email
+    </a>
+    <a href="{{pathFor 'userUpdatePassword' user_id=getUserId}}" class="{{#if isActive 'password'}}active{{/if}}">
+      <i class="fa fa-lock"></i>
+      Password
+    </a>
+  </div>
 </Template>

@@ -68,7 +68,16 @@ loggedInRoutes.route('/user/:user_id', {
   action(params) {
     BlazeLayout.render("layout", {main: "userProfile", hero: "heroUser"});
   },
-  subscriptions: function(params, queryParams) {
-    this.register('user-profile', Meteor.subscribe(params.user_id));
-  }
+})
+loggedInRoutes.route('/user/:user_id/email', {
+  name: "userUpdateEmail",
+  action(params) {
+    BlazeLayout.render("layout", {main: "userUpdateEmail", hero: "heroUser"});
+  },
+})
+loggedInRoutes.route('/user/:user_id/password', {
+  name: "userUpdatePassword",
+  action(params) {
+    BlazeLayout.render("layout", {main: "userUpdatePassword", hero: "heroUser"});
+  },
 })

@@ -74,6 +74,13 @@ Template.registerHelper('getDisplayName', function() {
   let user = Meteor.user()
   return getDisplayName(user)
 });
+Template.registerHelper('equals', function (a, b) {
+  return a === b;
+});
+Template.registerHelper('notequals', function (a, b) {
+  return a !== b;
+});
+
 
 Avatar.setOptions({
   gravatarDefault: "identicon",

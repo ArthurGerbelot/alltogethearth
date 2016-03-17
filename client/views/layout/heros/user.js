@@ -1,9 +1,13 @@
 Template.heroUser.onCreated(function() {
   let instance = this;
+  let user_id = FlowRouter.getParam('user_id')
 
-  // Meteor.subscribe("user-profile", FlowRouter.getParam('user_id'));
+  instance.subscribe('user-profile', user_id);
 
-  instance.user = new ReactiveVar(Meteor.users.findOne({_id: FlowRouter.getParam('user_id')}))
+  Tracker.autorun(function() {
+    console.log("Is myPost ready?:", FlowRouter.subsReady("user-profile"));
+    instance.user = new ReactiveVar(Meteor.users.findOne({_id: user_id}))
+  });
 
   // Particle JS
   initParticlesJS()
@@ -11,6 +15,7 @@ Template.heroUser.onCreated(function() {
 
 Template.heroUser.helpers({
   getUser() {
+    console.log("get User ", Template.instance().user.get())
     return Template.instance().user.get()
   },
   getTitle() {
@@ -99,7 +104,7 @@ let particles_json = {
         "mode": "repulse"
       },
       "onclick": {
-        "enable": true,
+        "enable": false,
         "mode": "push"
       },
       "resize": true

@@ -1,4 +1,6 @@
 <Template name="userUpdateEmail">
-  {{> userPanel active='email'}}
-  - email
+  {{> userPanel active='email' user=getMe}}
+  <div class="user-content">
+    Email
+  </div>
 </Template>
