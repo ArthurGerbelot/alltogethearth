@@ -100,7 +100,7 @@ getDisplayName = function(user) {
     }
   }
   if (user && user.emails && user.emails[0] && user.emails[0].address) {
-    returnuser.emails[0].address
+    return user.emails[0].address
   }
   return "?"
 }

@@ -17,6 +17,14 @@
       i {
         margin-right: .5em;
       }
+      .user-panel-notif {
+        padding: 0 0.35em;
+        float: right;
+        background: #FD3E3B;
+        color: #FFF;
+        border-radius: 1.4em;
+        text-align: center;
+      }
 
       &:last-of-type {
         border: 1px solid #ECECEC;
@@ -42,15 +50,41 @@
         max-width: 300px;
         margin: auto;
       }
+
+      .email {
+        float: left;
+
+        .fa-star, .fa-star-o {
+          margin-right: 1em;
+          color: $primary_color;
+        }
+        .fa-star-o {
+          color: #999;
+          &:hover {
+            color: $primary_color;
+          }
+        }
+
+        .not-verified {
+          color: $error_color;
+        }
+      }
+      .button--create {
+        float: right;
+        margin: 0;
+      }
+      .new-email {
+        margin-right: 155px;
+      }
     }
   }
 
-  @media (max-width: $size_small) {
+  @media (max-width: $size_large) {
     .user-update-content-wrapper {
       margin-left: 0;
     }
   }
-  @media (max-width: $size_x_small) {
+  @media (max-width: $size_small) {
     .user-panel {
       float: none;
       margin: auto;

@@ -1,43 +1,60 @@
 <Template name="userUpdateEmail">
-  <div class="card card-block">
-    <h3 class="card-title">Update emails</h3>
-    <div class="row">
-      <div class="col-sm-12">
-        <strong>Coming soon</strong>
-      </div>
-    <!--
+  <div class="box">
+    <h3 class="box-title">Update Email</h3>
+    <div class="box-listing">
       {{#with getUser}}
-        {{#if hasValidationError 'emails'}}
-          <div class="has-error"><small class="help-block">{{getValidationError 'emails'}}</small></div>
-        {{/if}}
-        {{#each getUserEmails}}
-          <div class="col-sm-12">
-            <fieldset class="form-group {{#if hasValidationError 'address'}}has-error{{/if}} {{#if hasValidationError 'verified'}}has-error{{/if}}">
-              <div class="input-group">
-                <div class="input-group-btn">
-                  <button class="btn btn-verify btn-secondary verify-email" data-email-idx="{{@index}}">
-                    <i class="fa {{classEmailVerified verified}}"></i>
-                  </button>
-                </div>
-                <input type="email" class="form-control" name="address-{{@index}}" value="{{address}}" data-email-idx="{{@index}}">
-                <div class="input-group-btn">
-                  <button class="btn btn-danger delete-email" data-email-idx="{{@index}}">
-                    <i class="fa fa-trash"></i> Delete
-                  </button>
-                </div>
-              </div>
-              {{#if hasValidationError 'address'}}
-                <small class="help-block">{{getValidationError 'address'}}</small>
-              {{else}}
-                {{#if hasValidationError 'verified'}}
-                  <small class="help-block">{{getValidationError 'verified'}}</small>
+        {{#each emails}}
+          <div class="box-listing-item">
+            <div class="email">
+              {{#if haveMultipleEmails}}
+                {{#if primary}}
+                  <i class="fa fa-star"></i>
+                {{else}}
+                  <a class="set-primary"><i class="fa fa-star-o"></i></a>
                 {{/if}}
               {{/if}}
-            </fieldset>
+
+              <strong>{{address}}</strong>
+              {{#if equals verified false}}
+                <span class="not-verified"> - <i class="fa fa-unlock"></i> not verified</span>
+              {{/if}}
+            </div>
+
+            {{#if haveMultipleEmails}}
+              {{#if canRemove}}
+                <a class="box-listing-item-action action-remove">
+                  <i class="fa fa-times"></i> Remove
+                </a>
+              {{else}}
+                <span class="box-listing-item-action disabled-link">
+                  <i class="fa fa-times"></i> Remove
+                </span>
+              {{/if}}
+            {{/if}}
+
+            {{#if equals verified false}}
+              <a class="box-listing-item-action action-verify">
+                <i class="fa fa-lock"></i> Send email
+              </a>
+            {{/if}}
+
           </div>
         {{/each}}
+        {{#each getUserNewEmails}}
+          <div class="box-listing-item">
+            {{#if error}}
+              <div class="error">{{error}}</div>
+            {{/if}}
+            <button class="button button--create" data-index="{{@index}}">Create</button>
+            <div class="new-email">
+              <input class="form-control {{#if error}}has-error{{/if}}" type="email" name="email-{{@index}}" value="{{address}}" data-index="{{@index}}"/>
+            </div>
+          </div>
+        {{/each}}
+        <a class="box-listing-item box-listing-item--more">
+          <i class="fa fa-plus"></i> Add email
+        </a>
       {{/with}}
-    -->
     </div>
   </div>
 </Template>

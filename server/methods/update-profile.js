@@ -26,14 +26,67 @@ Meteor.methods({
     // Save
     let update = user.profile
 
-    update.username =values.username
+    update.username = values.username
     update.firstName = values.firstName
     update.lastName = values.lastName
 
     Meteor.users.update({_id: user._id}, {'$set': {profile: update}})
 
     return {success:true}
-  }
+  },
+
+  'update-user-add-email': function (user_id, email) {
+    if (user_id !== Meteor.userId()) {
+      throw new Meteor.Error(401, "Unauthorized")
+    }
+
+    let user = Meteor.user()
+    let error = null
+
+    if (!email) {
+      error = 'required'
+    }
+    else if (!validateEmail(email)) {
+      error = 'unvalid'
+    }
+    // If error
+    if (error) {
+      throw new Meteor.Error(401, error)
+    }
+    // Valid email, check if already exist
+    Accounts.addEmail(user_id, email)
+
+    return {success:true}
+  },
+  'update-user-remove-email': function (user_id, email) {
+    if (user_id !== Meteor.userId()) {
+      throw new Meteor.Error(401, "Unauthorized")
+    }
+
+    Accounts.removeEmail(user_id, email)
+
+    return {success:true}
+  },
+  'update-user-set-primary-email': function (user_id, email) {
+    if (user_id !== Meteor.userId()) {
+      throw new Meteor.Error(401, "Unauthorized")
+    }
+
+    let user = Meteor.user()
+    let error = null
+
+    let update = user.emails.map(e => {
+      if (e.primary) {
+        delete e.primary
+      }
+      if (e.address === email) {
+        e.primary = true
+      }
+      return e
+    })
+    Meteor.users.update({_id: user._id}, {'$set': {emails: update}})
+    return {success:true}
+  },
 })
 
 // Only if it's a new, so if we found it

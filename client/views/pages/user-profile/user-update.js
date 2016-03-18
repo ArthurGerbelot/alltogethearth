@@ -4,8 +4,9 @@ Template.userUpdate.onCreated(function() {
 
   instance.subscribe('user-profile', user_id);
 
+  instance.user = new ReactiveVar(Meteor.users.findOne({_id: user_id}))
   Tracker.autorun(function() {
-    instance.user = new ReactiveVar(Meteor.users.findOne({_id: user_id}))
+    instance.user.set(Meteor.users.findOne({_id: user_id}))
     console.log("Update user : ", instance.user.get())
   })
 })

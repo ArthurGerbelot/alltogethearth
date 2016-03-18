@@ -6,5 +6,14 @@ Template.userPanel.helpers({
   isActive(type) {
     console.log(Template.instance().data.active, type)
     return (Template.instance().data.active === type)
+  },
+  countEmailNotification() {
+    let count = 0
+    _.each(Template.instance().data.user.emails, e => {
+      if (!e.verified) {
+        count++
+      }
+    })
+    return count
   }
 })

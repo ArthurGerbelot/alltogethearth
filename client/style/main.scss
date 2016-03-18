@@ -50,6 +50,11 @@ a:hover {
   color: lighten($primary_color, 20);
   text-decoration: none;
 }
+.disabled-link {
+  color: lighten($page_color, 30);
+  cursor: not-allowed;
+}
+
 .button {
   display: block;
   min-width: 150px;
@@ -73,6 +78,12 @@ a:hover {
     background: lighten($primary_color, 10);
     border: 1px solid darken($primary_color, 5);
   }
+}
+.error {
+  color: $error_color;
+}
+.success {
+  color: $success_color;
 }
 
 /* All Togeth'Earth */

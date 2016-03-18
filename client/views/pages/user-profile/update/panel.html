@@ -5,6 +5,9 @@
       Basic info
     </a>
     <a href="{{pathFor 'userUpdate' user_id=getUserId update_view='email'}}" class="{{#if isActive 'email'}}active{{/if}}">
+      {{#if countEmailNotification}}
+        <span class="user-panel-notif">{{countEmailNotification}}</span>
+      {{/if}}
       <i class="fa fa-envelope"></i>
       Email
     </a>
