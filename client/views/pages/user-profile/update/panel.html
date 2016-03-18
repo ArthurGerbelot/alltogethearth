@@ -1,0 +1,20 @@
+<Template name="userPanel">
+  <nav class="user-panel">
+    <a href="{{pathFor 'userUpdate' user_id=getUserId update_view='profile'}}" class="{{#if isActive 'profile'}}active{{/if}}">
+      <i class="fa fa-user"></i>
+      Basic info
+    </a>
+    <a href="{{pathFor 'userUpdate' user_id=getUserId update_view='email'}}" class="{{#if isActive 'email'}}active{{/if}}">
+      <i class="fa fa-envelope"></i>
+      Email
+    </a>
+    <a href="{{pathFor 'userUpdate' user_id=getUserId update_view='phone'}}" class="{{#if isActive 'phone'}}active{{/if}}">
+      <i class="fa fa-phone"></i>
+      Phone
+    </a>
+    <a href="{{pathFor 'userUpdate' user_id=getUserId update_view='password'}}" class="{{#if isActive 'password'}}active{{/if}}">
+      <i class="fa fa-lock"></i>
+      Password
+    </a>
+  </nav>
+</Template>

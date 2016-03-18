@@ -63,21 +63,17 @@ notLoggedInRoutes.route('/reset-password/:reset_token', {
   }
 });
 
-loggedInRoutes.route('/user/:user_id', {
-  name: "user",
-  action(params) {
-    BlazeLayout.render("layout", {main: "userProfile", hero: "heroUser"});
-  },
-})
-loggedInRoutes.route('/user/:user_id/email', {
-  name: "userUpdateEmail",
-  action(params) {
-    BlazeLayout.render("layout", {main: "userUpdateEmail", hero: "heroUser"});
-  },
-})
-loggedInRoutes.route('/user/:user_id/password', {
-  name: "userUpdatePassword",
-  action(params) {
-    BlazeLayout.render("layout", {main: "userUpdatePassword", hero: "heroUser"});
-  },
-})
+
+loggedInRoutes.route('/user/:user_id/', {
+  name: "userProfile",
+  action: function (params) {
+    BlazeLayout.render("layout", {nav: "publicNav", main: "userProfile", hero: "heroUser"});
+  }
+});
+
+loggedInRoutes.route('/user/:user_id/:update_view', {
+  name: "userUpdate",
+  action: function (params) {
+    BlazeLayout.render("layout", {nav: "publicNav", main: "userUpdate", hero: "heroUser"});
+  }
+});

@@ -1,12 +1,10 @@
-#layout-wrapper #page-wrapper #page.userProfile,
-#layout-wrapper #page-wrapper #page.userUpdateEmail,
-#layout-wrapper #page-wrapper #page.userUpdatePassword {
+#layout-wrapper #page-wrapper #page.userUpdate {
 
   padding-top: 100px;
 
   .user-panel {
     width: 200px;
-    float: left;
+    float: right;
 
     a {
       display: block;
@@ -32,17 +30,35 @@
     }
   }
 
-  .user-content {
-    margin: 0 200px;
+  .user-update-content-wrapper {
     padding: 0 25px;
-
-    @media (max-width: $size_small) {
-      margin-right: 0;
-    }
+    margin: 0 225px;
 
     .box {
       max-width: 600px;
       margin: auto;
+
+      form {
+        max-width: 300px;
+        margin: auto;
+      }
     }
   }
+
+  @media (max-width: $size_small) {
+    .user-update-content-wrapper {
+      margin-left: 0;
+    }
+  }
+  @media (max-width: $size_x_small) {
+    .user-panel {
+      float: none;
+      margin: auto;
+      margin-bottom: 20px;
+    }
+    .user-update-content-wrapper {
+      margin: 0;
+    }
+  }
+
 }

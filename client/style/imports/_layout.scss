@@ -69,10 +69,10 @@
       .nav-subnav {
         position: absolute;
         z-index: 4;
-        top: -100px;
+        top: -150px;
         right: 0;
         width: 220px;
-        transition: top 1s;
+        transition: top 0.3s;
         background: $nav_background_color;
         border-top: 1px solid lighten($nav_background_color, 10);
 

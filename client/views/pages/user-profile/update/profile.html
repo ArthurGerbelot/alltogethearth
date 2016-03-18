@@ -1,0 +1,39 @@
+<Template name="userUpdateProfile">
+  <div class="box">
+    <h3 class="box-title">Update basic information</h3>
+    <div class="box-content">
+      {{#with getUser}}
+        <form>
+          <div class="field-group {{#if hasError 'username'}}has-error{{/if}}">
+            <label for="username">
+              Display name
+              {{#if hasError 'username'}}<span class="error">{{getError 'username'}}</span>{{/if}}
+            </label>
+            <input class="form-control" type="username" name="username" value="{{getValue 'username'}}" />
+          </div>
+          <div class="separator"></div>
+          <div class="field-group {{#if hasError 'firstName'}}has-error{{/if}}">
+            <label for="firstName">
+              First name
+              {{#if hasError 'firstName'}}<span class="error">{{getError 'firstName'}}</span>{{/if}}
+            </label>
+            <input class="form-control" type="firstName" name="firstName" value="{{getValue 'firstName'}}" />
+          </div>
+          <div class="field-group {{#if hasError 'lastName'}}has-error{{/if}}">
+            <label for="lastName">
+              Last name
+              {{#if hasError 'lastName'}}<span class="error">{{getError 'lastName'}}</span>{{/if}}
+            </label>
+            <input class="form-control" type="lastName" name="lastName" value="{{getValue 'lastName'}}" />
+          </div>
+          <div class="field-submit">
+            <button class="button">
+              <i class="fa fa-floppy-o"></i>
+              Save
+            </button>
+          </div>
+        </form>
+      {{/with}}
+    </div>
+  </div>
+</Template>

@@ -16,11 +16,16 @@
           <a href="{{pathFor 'services'}}" class="nav-link {{isActiveRoute 'services'}}">Services</a>
           <a href="{{pathFor 'citizens'}}" class="nav-link {{isActiveRoute 'citizens'}}">Citizens</a>
         </div>
+
         <div id="layout-subnav-container">
           <div class="nav-subnav nav-subnav--user-account {{#if subnavUserAccountIsOpen}} nav-subnav--open {{/if}}">
-            <a href="{{pathFor 'user' user_id=getMyId}}" class="subnav-link">
-              <i class="fa fa-gear"></i>
+            <a href="{{pathFor 'userProfile' user_id=getMyId}}" class="subnav-link">
+              <i class="fa fa-user"></i>
               Profile
+            </a>
+            <a href="{{pathFor 'userUpdate' user_id=getMyId update_view='profile'}}" class="subnav-link">
+              <i class="fa fa-gear"></i>
+              Settings
             </a>
             <a class="subnav-link subnav-link--logout"><i class="fa fa-sign-out"></i>Logout</a>
           </div>

@@ -1,0 +1,22 @@
+<template name="userUpdate">
+  <div id="user-update">
+    <div class="container">
+      {{#if Template.subscriptionsReady}}
+        {{#if isAuthorized}}
+
+          {{> userPanel user=getUser active=getActiveUpdate}}
+          <div class="user-update-content-wrapper">
+            <div class="user-update-content">
+              {{> Template.dynamic template=getTemplateName data=getTemplateData}}
+            </div>
+          </div>
+
+        {{else}}
+          Not Authorized
+        {{/if}}
+      {{else}}
+        Loading
+      {{/if}}
+    </div>
+  </div>
+</template>

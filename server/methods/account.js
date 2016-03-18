@@ -1,8 +1,5 @@
 Meteor.methods({
   'signup': function (opts) {
-
-    console.log("Validate signup : ", opts)
-
     let errors = {}
 
     // Validate email
@@ -14,14 +11,10 @@ Meteor.methods({
 
     // Validate password
     validateBothPasswords(opts, errors)
-    console.log("Errors: ", errors)
 
     if (Object.keys(errors).length > 0) {
-    console.log("Errors: ", errors)
       throw new Meteor.Error(errors)
     }
-
-    console.log("Create: ", opts)
 
     let user_id = Accounts.createUser({
       email: opts.email,
@@ -34,22 +27,17 @@ Meteor.methods({
   },
   'reset-password': function (opts) {
 
-    console.log("Validate reset password : ", opts)
-
     let errors = {}
 
     // Validate password
     validateBothPasswords(opts, errors)
-    console.log("Errors: ", errors)
 
     // Send error a first time if password test fail, before take a look to the database
     if (Object.keys(errors).length > 0) {
-    console.log("Errors: ", errors)
       throw new Meteor.Error(errors)
     }
 
     let user = Meteor.users.findOne({'services.password.reset.token': opts.reset_token})
-    console.log("User found : ", user)
     if (!user) {
       errors.token = 'not-found'
     }
@@ -58,11 +46,8 @@ Meteor.methods({
     }
 
     if (Object.keys(errors).length > 0) {
-    console.log("Errors: ", errors)
       throw new Meteor.Error(errors)
     }
-
-    console.log("reset: ", opts)
 
     Accounts.setPassword(user._id, opts.password)
 

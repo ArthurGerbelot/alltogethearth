@@ -1,6 +1,43 @@
 <Template name="userUpdateEmail">
-  {{> userPanel active='email' user=getMe}}
-  <div class="user-content">
-    Email
+  <div class="card card-block">
+    <h3 class="card-title">Update emails</h3>
+    <div class="row">
+      <div class="col-sm-12">
+        <strong>Coming soon</strong>
+      </div>
+    <!--
+      {{#with getUser}}
+        {{#if hasValidationError 'emails'}}
+          <div class="has-error"><small class="help-block">{{getValidationError 'emails'}}</small></div>
+        {{/if}}
+        {{#each getUserEmails}}
+          <div class="col-sm-12">
+            <fieldset class="form-group {{#if hasValidationError 'address'}}has-error{{/if}} {{#if hasValidationError 'verified'}}has-error{{/if}}">
+              <div class="input-group">
+                <div class="input-group-btn">
+                  <button class="btn btn-verify btn-secondary verify-email" data-email-idx="{{@index}}">
+                    <i class="fa {{classEmailVerified verified}}"></i>
+                  </button>
+                </div>
+                <input type="email" class="form-control" name="address-{{@index}}" value="{{address}}" data-email-idx="{{@index}}">
+                <div class="input-group-btn">
+                  <button class="btn btn-danger delete-email" data-email-idx="{{@index}}">
+                    <i class="fa fa-trash"></i> Delete
+                  </button>
+                </div>
+              </div>
+              {{#if hasValidationError 'address'}}
+                <small class="help-block">{{getValidationError 'address'}}</small>
+              {{else}}
+                {{#if hasValidationError 'verified'}}
+                  <small class="help-block">{{getValidationError 'verified'}}</small>
+                {{/if}}
+              {{/if}}
+            </fieldset>
+          </div>
+        {{/each}}
+      {{/with}}
+    -->
+    </div>
   </div>
 </Template>
