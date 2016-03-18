@@ -20,16 +20,18 @@ Meteor.methods({
 
     // If error
     if (Object.keys(errors).length > 0) {
-      throw new Meteor.Error(errors)
+      throw new Meteor.Error(401, errors)
     }
 
     // Save
-    user.set({
-      'profile.username': values.username,
-      'profile.firstName': values.firstName,
-      'profile.lastName': values.lastName,
-    })
-    user.save()
+    let update = user.profile
+
+    update.username =values.username
+    update.firstName = values.firstName
+    update.lastName = values.lastName
+
+    Meteor.users.update({_id: user._id}, {'$set': {profile: update}})
+
     return {success:true}
   }
 })

@@ -13,7 +13,7 @@ Meteor.methods({
     validateBothPasswords(opts, errors)
 
     if (Object.keys(errors).length > 0) {
-      throw new Meteor.Error(errors)
+      throw new Meteor.Error(401, errors)
     }
 
     let user_id = Accounts.createUser({
@@ -34,7 +34,7 @@ Meteor.methods({
 
     // Send error a first time if password test fail, before take a look to the database
     if (Object.keys(errors).length > 0) {
-      throw new Meteor.Error(errors)
+      throw new Meteor.Error(401, errors)
     }
 
     let user = Meteor.users.findOne({'services.password.reset.token': opts.reset_token})
@@ -46,7 +46,7 @@ Meteor.methods({
     }
 
     if (Object.keys(errors).length > 0) {
-      throw new Meteor.Error(errors)
+      throw new Meteor.Error(401, errors)
     }
 
     Accounts.setPassword(user._id, opts.password)

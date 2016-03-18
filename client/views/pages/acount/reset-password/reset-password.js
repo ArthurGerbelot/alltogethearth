@@ -39,8 +39,8 @@ Template.resetPassword.events({
 
     Meteor.call('reset-password', values, function(err, result) {
       if (err) {
-        console.warn("reset password Error : ", err, err.error)
-        return instance.errors.set(err.error)
+        console.warn("reset password Error : ", err, err.reason)
+        return instance.errors.set(err.reason)
       }
       FlowRouter.go('login')
     })

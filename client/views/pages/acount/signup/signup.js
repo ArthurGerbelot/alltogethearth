@@ -39,17 +39,17 @@ Template.signup.events({
           errors.email = err.reason
           instance.errors.set(errors)
         } else {
-          instance.errors.set(err.error)
+          instance.errors.set(err.reason)
         }
         return;
       }
       console.log("Signup Result : ", result)
       Meteor.loginWithPassword(values.email, values.password, function(err, result) {
         if (err) {
-          return console.log("Login Error : ", err, err.error)
+          return console.log("Login Error : ", err, err.reason)
         }
         console.log("login result : ", result)
-        FlowRouter.go('user', {user_id: Meteor.userId()})
+        FlowRouter.go('userUpdate', {user_id: Meteor.userId(), update_view: 'profile'})
       })
     })
   }

@@ -46,13 +46,14 @@ Template.userUpdateProfile.events({
     let user = Template.instance().data.user
     let values = Template.instance().values.get()
 
+    Template.instance().errors.set({})
+
     Meteor.call('update-user-profile', user._id, values, function (err, result) {
-      if (!err && result.success) {
-        console.log("Success")
-      } else {
-        console.log("err", err)
-        console.log("result", result)
+      if (err) {
+        instance.errors.set(err.reason)
+        return
       }
+      console.log("Success")
     });
   },
 })

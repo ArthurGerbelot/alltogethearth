@@ -91,5 +91,16 @@ Avatar.setOptions({
 });
 
 getDisplayName = function(user) {
-  return user && user.emails && user.emails[0] && user.emails[0].address
+  if (user && user.profile) {
+    if (user.profile.username) {
+      return user.profile.username
+    }
+    if (user.profile.firstName && user.profile.lastName) {
+      return user.profile.firstName + " " + user.profile.lastName
+    }
+  }
+  if (user && user.emails && user.emails[0] && user.emails[0].address) {
+    returnuser.emails[0].address
+  }
+  return "?"
 }

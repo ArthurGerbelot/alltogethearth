@@ -48,10 +48,10 @@ Template.login.events({
     Meteor.loginWithPassword(values.email, values.password, function(err, result) {
       if (err) {
         instance.has_global_error.set(true)
-        return console.log("Login Error : ", err, err.error)
+        return console.log("Login Error : ", err, err.reason)
       }
       console.log("login result : ", result)
-      FlowRouter.go('home')
+      FlowRouter.go('userUpdate', {user_id: Meteor.userId(), update_view: 'profile'})
     })
   }
 })

@@ -7,3 +7,4 @@ Accounts.emailTemplates.resetPassword.text = function(user, url) {
   url = url.replace('/#/reset-password', '/reset-password')
   return "To reset your password, simply click the link below. " + url ;
 }
+
