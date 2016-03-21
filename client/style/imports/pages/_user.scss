@@ -51,7 +51,7 @@
         margin: auto;
       }
 
-      .email {
+      .email, .phone {
         float: left;
 
         .fa-star, .fa-star-o {
@@ -73,8 +73,15 @@
         float: right;
         margin: 0;
       }
-      .new-email {
+      .new-email, .new-phone {
         margin-right: 155px;
+      }
+      .new-phone {
+        margin-left: 105px;
+      }
+      select[name=country_code] {
+        width: 100px;
+        float: left;
       }
     }
   }

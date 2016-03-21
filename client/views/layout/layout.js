@@ -99,8 +99,19 @@ getDisplayName = function(user) {
       return user.profile.firstName + " " + user.profile.lastName
     }
   }
-  if (user && user.emails && user.emails[0] && user.emails[0].address) {
-    return user.emails[0].address
+  let email = getPrimaryEmail(user)
+  if (email) {
+    return email
   }
   return "?"
+}
+getPrimaryEmail = function(user) {
+  if (!user || !user.emails) {
+    return null
+  }
+  for (idx in user.emails) {
+    if (user.emails[idx].primary) {
+      return user.emails[idx].address
+    }
+  }
 }

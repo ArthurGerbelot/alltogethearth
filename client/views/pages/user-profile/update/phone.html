@@ -1,3 +1,58 @@
 <Template name="userUpdatePhone">
-  <strong>Coming soon</strong>
+  <div class="box">
+    <h3 class="box-title">Update Phone</h3>
+    <div class="box-listing">
+      {{#with getUser}}
+        {{#each phones}}
+          <div class="box-listing-item">
+            <div class="phone">
+              {{#if haveMultiplePhones}}
+                {{#if primary}}
+                  <i class="fa fa-star"></i>
+                {{else}}
+                  <a class="set-primary"><i class="fa fa-star-o"></i></a>
+                {{/if}}
+              {{/if}}
+
+              <strong>{{number}}</strong>
+              {{#if equals verified false}}
+                <span class="not-verified"> - <i class="fa fa-unlock"></i> not verified</span>
+              {{/if}}
+            </div>
+
+            <span class="box-listing-item-action disabled-link">
+              <i class="fa fa-times"></i> Remove
+            </span>
+
+            {{#if equals verified false}}
+              <a class="box-listing-item-action action-verify">
+                <i class="fa fa-lock"></i> Send SMS
+              </a>
+            {{/if}}
+          </div>
+        {{/each}}
+
+        {{#each getUserNewPhones}}
+          <div class="box-listing-item">
+            {{#if error}}
+              <div class="error">{{error}}</div>
+            {{/if}}
+            <button class="button button--create" data-index="{{@index}}">Create</button>
+            <select class="form-control country-code {{#if error}}has-error{{/if}}" name="country_code" data-index="{{@index}}">
+              <option value="+1">+1</option>
+              <option value="+33">+33</option>
+              <option value="+39">+39</option>
+              <option value="+44">+44</option>
+            </select>
+            <div class="new-phone">
+              <input class="form-control phone {{#if error}}has-error{{/if}}" type="phone" name="phone" value="{{number}}" data-index="{{@index}}"/>
+            </div>
+          </div>
+        {{/each}}
+        <a class="box-listing-item box-listing-item--more">
+          <i class="fa fa-plus"></i> Add phone
+        </a>
+      {{/with}}
+    </div>
+  </div>
 </Template>

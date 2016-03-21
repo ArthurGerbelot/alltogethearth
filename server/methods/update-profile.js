@@ -1,4 +1,6 @@
 Meteor.methods({
+
+  // Profile
   'update-user-profile': function (user_id, values) {
     if (user_id !== Meteor.userId()) {
       throw new Meteor.Error(401, "Unauthorized")
@@ -35,6 +37,7 @@ Meteor.methods({
     return {success:true}
   },
 
+  // Email
   'update-user-add-email': function (user_id, email) {
     if (user_id !== Meteor.userId()) {
       throw new Meteor.Error(401, "Unauthorized")
@@ -85,6 +88,30 @@ Meteor.methods({
       return e
     })
     Meteor.users.update({_id: user._id}, {'$set': {emails: update}})
+    return {success:true}
+  },
+
+  // Phones
+  'update-user-add-phone': function (user_id, phone) {
+    if (user_id !== Meteor.userId()) {
+      throw new Meteor.Error(401, "Unauthorized")
+    }
+
+    let user = Meteor.user()
+    let error = null
+
+    if (!phone.number) {
+      error = 'required'
+    }
+    else if (!validatePhone(phone)) {
+      error = 'unvalid'
+    }
+    // If error
+    if (error) {
+      throw new Meteor.Error(401, error)
+    }
+
+
     return {success:true}
   },
 })
