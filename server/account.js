@@ -6,6 +6,7 @@ Accounts.onCreateUser(function (options, user) {
 
   user.profile = options.profile ? options.profile : {}
   user.emails[0].primary = true
+  user.phones = []
 
   return user
 })

@@ -96,6 +96,7 @@ Meteor.methods({
     if (user_id !== Meteor.userId()) {
       throw new Meteor.Error(401, "Unauthorized")
     }
+    console.log("Add phone : ", phone)
 
     let user = Meteor.user()
     let error = null
@@ -111,6 +112,19 @@ Meteor.methods({
       throw new Meteor.Error(401, error)
     }
 
+    let usserSamePhone = Meteor.users.find({'phones.number': phone.number, 'phones.countryCode': phone.countryCode}).fetch()
+    console.log("usserSamePhone", usserSamePhone)
+    if (usserSamePhone.length > 0) {
+      throw new Meteor.Error(401, "already-exist")
+    }
+    let new_phone = {
+      number: phone.number,
+      countryCode: phone.countryCode,
+      primary: (user.phones.length === 0),
+      verified: false,
+    }
+    user.phones.push(new_phone)
+    Meteor.users.update({_id: user._id},{'$set': {phones: user.phones}})
 
     return {success:true}
   },

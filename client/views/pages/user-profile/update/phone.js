@@ -74,6 +74,8 @@ Template.userUpdatePhone.events({
     let index = e.currentTarget.getAttribute('data-index')
     console.log("Create ", new_phones[index], " on ", index)
 
+    delete new_phones[index].error
+
     Meteor.call('update-user-add-phone', instance.data.user._id, new_phones[index], function (err, result) {
       if (err) {
         new_phones[index].error = err.reason
@@ -91,7 +93,8 @@ Template.userUpdatePhone.events({
     let instance = Template.instance()
     let new_phones = instance.new_phones.get()
     new_phones.push({
-      address: '',
+      number: '',
+      countryCode: '+1',
       error: null
     })
     console.log(new_phones)

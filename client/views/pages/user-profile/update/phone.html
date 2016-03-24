@@ -14,7 +14,7 @@
                 {{/if}}
               {{/if}}
 
-              <strong>{{number}}</strong>
+              <strong>({{countryCode}}) {{number}}</strong>
               {{#if equals verified false}}
                 <span class="not-verified"> - <i class="fa fa-unlock"></i> not verified</span>
               {{/if}}
@@ -25,7 +25,7 @@
             </span>
 
             {{#if equals verified false}}
-              <a class="box-listing-item-action action-verify">
+              <a class="box-listing-item-action action-verify disabled-link">
                 <i class="fa fa-lock"></i> Send SMS
               </a>
             {{/if}}
@@ -45,7 +45,7 @@
               <option value="+44">+44</option>
             </select>
             <div class="new-phone">
-              <input class="form-control phone {{#if error}}has-error{{/if}}" type="phone" name="phone" value="{{number}}" data-index="{{@index}}"/>
+              <input class="form-control phone {{#if error}}has-error{{/if}}" type="phone" name="number" value="{{number}}" data-index="{{@index}}"/>
             </div>
           </div>
         {{/each}}
